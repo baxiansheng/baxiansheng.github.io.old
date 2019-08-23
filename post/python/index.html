@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Python // My New Hugo Site</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.56.3" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://baxiansheng,github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Python"/>
+<meta name="twitter:description" content="my personal python study note 1.爬取3D打印网论坛中的帖子  通过分析帖子的html页面的标签，使用python中的BeautifulSoup库进行爬取，并将爬取到的数据写入到mysql数据库中。
+ 关于数据库的操作代码如下：
+db = pymysql.connect(&quot;localhost&quot;, &quot;root&quot;, &quot;woaini&quot;, &quot;sdprint&quot;, charset=&#39;utf8&#39;) //打开数据库连接 cursor = db.cursor() //使用cursor()方法获取操作游标 sql = &quot;INSERT INTO sdprint(class,title, author,time, content)VALUES (%s,%s,%s, %s, %s);&quot; //构造sql语句 params = (sdprint[&quot;类别&quot;],sdprint[&quot;标题&quot;], sdprint[&quot;作者&quot;],sdprint[&quot;时间&quot;], sdprint[&quot;正文&quot;]) //参数 try: cursor.execute(sql,params) //执行sql语句 db.commit() //提交 print(&#39;success&#39;) except: db.rollback() print(&#39;error&#39;) db.close() //关闭数据库连接  关于BS使用实例代码如下：
+f = open(filename, &#39;r&#39;) //把.html文件打开 html = f.read() f.close() bs = BeautifulSoup(html, &quot;html.parser&quot;) //bs实例化 div = bs.find(&quot;div&quot;,{&quot;class&quot;:&quot;middle&quot;}) //找到类别为middle的div，存储在div变量中  python字典类型知识，直接上代码"/>
+
+    <meta property="og:title" content="Python" />
+<meta property="og:description" content="my personal python study note 1.爬取3D打印网论坛中的帖子  通过分析帖子的html页面的标签，使用python中的BeautifulSoup库进行爬取，并将爬取到的数据写入到mysql数据库中。
+ 关于数据库的操作代码如下：
+db = pymysql.connect(&quot;localhost&quot;, &quot;root&quot;, &quot;woaini&quot;, &quot;sdprint&quot;, charset=&#39;utf8&#39;) //打开数据库连接 cursor = db.cursor() //使用cursor()方法获取操作游标 sql = &quot;INSERT INTO sdprint(class,title, author,time, content)VALUES (%s,%s,%s, %s, %s);&quot; //构造sql语句 params = (sdprint[&quot;类别&quot;],sdprint[&quot;标题&quot;], sdprint[&quot;作者&quot;],sdprint[&quot;时间&quot;], sdprint[&quot;正文&quot;]) //参数 try: cursor.execute(sql,params) //执行sql语句 db.commit() //提交 print(&#39;success&#39;) except: db.rollback() print(&#39;error&#39;) db.close() //关闭数据库连接  关于BS使用实例代码如下：
+f = open(filename, &#39;r&#39;) //把.html文件打开 html = f.read() f.close() bs = BeautifulSoup(html, &quot;html.parser&quot;) //bs实例化 div = bs.find(&quot;div&quot;,{&quot;class&quot;:&quot;middle&quot;}) //找到类别为middle的div，存储在div变量中  python字典类型知识，直接上代码" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://baxiansheng,github.io/post/python/" />
+<meta property="article:published_time" content="2019-08-11T19:06:11+08:00" />
+<meta property="article:modified_time" content="2019-08-11T19:06:11+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://baxiansheng,github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>My New Hugo Site</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+      <div class="app-header-social">
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Python</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Aug 11, 2019
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://baxiansheng,github.io/tags/study/">study</a></div></div>
+    </header>
+    <div class="post-content">
+      
+
+<h2 id="my-personal-python-study-note">my personal python study note</h2>
+
+<h3 id="1-爬取-3d打印网-http-bbs-3drrr-com-forum-2-1-html-论坛中的帖子">1.爬取<a href="http://bbs.3drrr.com/forum-2-1.html">3D打印网</a>论坛中的帖子</h3>
+
+<blockquote>
+<p>通过分析帖子的html页面的标签，使用python中的BeautifulSoup库进行爬取，并将爬取到的数据写入到mysql数据库中。</p>
+
+<ul>
+<li><p>关于数据库的操作代码如下：</p>
+
+<pre><code>db = pymysql.connect(&quot;localhost&quot;, &quot;root&quot;, &quot;woaini&quot;, &quot;sdprint&quot;, charset='utf8') //打开数据库连接
+cursor = db.cursor() //使用cursor()方法获取操作游标
+sql = &quot;INSERT INTO sdprint(class,title, author,time, content)VALUES (%s,%s,%s, %s, %s);&quot; //构造sql语句
+params = (sdprint[&quot;类别&quot;],sdprint[&quot;标题&quot;], sdprint[&quot;作者&quot;],sdprint[&quot;时间&quot;], sdprint[&quot;正文&quot;]) //参数
+try:
+cursor.execute(sql,params) //执行sql语句
+db.commit() //提交
+print('success')
+except:
+db.rollback()
+print('error')
+db.close() //关闭数据库连接
+</code></pre></li>
+
+<li><p>关于BS使用实例代码如下：</p>
+
+<pre><code>f = open(filename, 'r') //把.html文件打开
+html = f.read()
+f.close()
+bs = BeautifulSoup(html, &quot;html.parser&quot;) //bs实例化
+div = bs.find(&quot;div&quot;,{&quot;class&quot;:&quot;middle&quot;}) //找到类别为middle的div，存储在div变量中
+</code></pre></li>
+
+<li><p>python字典类型知识，直接上代码</p>
+
+<pre><code>content = {} //定义一个名为content的字典
+content['姓名']='张三' //添加姓名条目张三
+content['年龄']='23' //添加年龄条目23
+content['部门']='信息部' // 添加部门条目信息部
+print(content) // 打印一下字典
+</code></pre>
+
+<p>结果如下
+{&lsquo;姓名&rsquo;: &lsquo;李四&rsquo;, &lsquo;年龄&rsquo;: &lsquo;25&rsquo;, &lsquo;部门&rsquo;: &lsquo;保卫部&rsquo;}</p></li>
+</ul>
+</blockquote>
+
+<h3 id="2">2.</h3>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
