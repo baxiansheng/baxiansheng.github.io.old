@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>study on Welcome to my blog</title>
-    <link>https://baxiansheng,github.io/tags/study/</link>
+    <link>https://baxiansheng.github.io/tags/study/</link>
     <description>Recent content in study on Welcome to my blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 11 Aug 2019 19:06:11 +0800</lastBuildDate>
     
-	<atom:link href="https://baxiansheng,github.io/tags/study/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://baxiansheng.github.io/tags/study/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Python</title>
-      <link>https://baxiansheng,github.io/post/python/</link>
+      <link>https://baxiansheng.github.io/post/python/</link>
       <pubDate>Sun, 11 Aug 2019 19:06:11 +0800</pubDate>
       
-      <guid>https://baxiansheng,github.io/post/python/</guid>
+      <guid>https://baxiansheng.github.io/post/python/</guid>
       <description>my personal python study note 1.爬取3D打印网论坛中的帖子  通过分析帖子的html页面的标签，使用python中的BeautifulSoup库进行爬取，并将爬取到的数据写入到mysql数据库中。
  关于数据库的操作代码如下：
 db = pymysql.connect(&amp;quot;localhost&amp;quot;, &amp;quot;root&amp;quot;, &amp;quot;woaini&amp;quot;, &amp;quot;sdprint&amp;quot;, charset=&#39;utf8&#39;) //打开数据库连接 cursor = db.cursor() //使用cursor()方法获取操作游标 sql = &amp;quot;INSERT INTO sdprint(class,title, author,time, content)VALUES (%s,%s,%s, %s, %s);&amp;quot; //构造sql语句 params = (sdprint[&amp;quot;类别&amp;quot;],sdprint[&amp;quot;标题&amp;quot;], sdprint[&amp;quot;作者&amp;quot;],sdprint[&amp;quot;时间&amp;quot;], sdprint[&amp;quot;正文&amp;quot;]) //参数 try: cursor.execute(sql,params) //执行sql语句 db.commit() //提交 print(&#39;success&#39;) except: db.rollback() print(&#39;error&#39;) db.close() //关闭数据库连接  关于BS使用实例代码如下：
