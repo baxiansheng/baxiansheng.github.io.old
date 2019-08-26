@@ -218,6 +218,71 @@ imagesc(A)  //可视化矩阵
 imagesc(A),colorbar,colormap gray; //生成灰度条</p>
 </blockquote>
 
+<h3 id="octave的循环语句-分支语句-定义函数和调用函数">octave的循环语句，分支语句，定义函数和调用函数</h3>
+
+<ul>
+<li><p>for循环:
+v= zeros(10,1)
+for i=1:10,
+v(i)=2^i;
+end;</p></li>
+
+<li><p>while循环:
+i=1;
+while i&lt;=5,
+v(i) = 100;
+i =i+1;
+end;</p></li>
+
+<li><p>if语句：
+if i==6,
+break;
+end;</p></li>
+</ul>
+
+<p>while true,
+  v(i)=999;
+  i=i+1;
+  if i==6,
+    break;
+  end;
+end;<br />
+注意到，while和if后边跟的都是逗号 ,而后边的语句都是使用分号结尾 ;</p>
+
+<ul>
+<li><p>if-else if-else语句：
+if v(1)==1,
+disp(&ldquo;the value is one&rdquo;);
+elseif v(1)==2,
+disp(&ldquo;the value is two&rdquo;);
+else
+disp(&ldquo;the value is not one or two&rdquo;);
+end;</p></li>
+
+<li><p>函数(function)
+1.编写一个后缀名为.m的文件，文件中定义：<br />
+function y = squarethisnumber(x)<br />
+y = x^2;</p></li>
+</ul>
+
+<p>然后只需在.m文件所在的路径下 直接输入函数名调用即可！</p>
+
+<p>2.一个稍微复杂的函数，内容如下：<br />
+function J = costFunctionJ(x,y,theta)//传入的参数分别为x是构造矩阵，e.g.: x=[1 1;1 2;1 3]<br />
+                                     // y是向量，y=[1;2;3]
+                                     // theta是参数向量，theta=[0;1]<br />
+m = size(x,1);//令m等于x矩阵的行数，这里为3，用于下边的计算。<br />
+predictions = x*theta;// 假设函数的值，通过矩阵运算一次求出，并且保存在predictions向量中
+sqrErrors = (predictions-y).^2;// 求方差，进行的是位运算，对两个向量的差，求其平方<br />
+J = 1/(2*m) * sum(sqrErrors);//J为cost函数的损耗值</p>
+
+<h3 id="向量化">向量化</h3>
+
+<p>通常来说是将复杂的计算转化为向量的乘积。<br />
+for example：<br />
+![向量化]()<br />
+对于向量化的使用可以极大的简化计算，提升程序运行速度，但是对于一个运算式子如何将其向量化是一个难点，这里挖下一个坑，以后好好研究一下。</p>
+
     </div>
     <div class="post-footer">
       
