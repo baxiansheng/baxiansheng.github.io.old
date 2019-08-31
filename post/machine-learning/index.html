@@ -221,45 +221,45 @@ imagesc(A),colorbar,colormap gray; //生成灰度条</p>
 <h3 id="octave的循环语句-分支语句-定义函数和调用函数">octave的循环语句，分支语句，定义函数和调用函数</h3>
 
 <ul>
-<li><p>for循环:
-v= zeros(10,1)
-for i=1:10,
-v(i)=2^i;
+<li><p>for循环:<br />
+v= zeros(10,1)<br />
+for i=1:10,<br />
+v(i)=2^i;<br />
 end;</p></li>
 
-<li><p>while循环:
-i=1;
-while i&lt;=5,
-v(i) = 100;
-i =i+1;
+<li><p>while循环:<br />
+i=1;<br />
+while i&lt;=5,<br />
+v(i) = 100;<br />
+i =i+1;<br />
 end;</p></li>
 
-<li><p>if语句：
-if i==6,
-break;
+<li><p>if语句：<br />
+if i==6,<br />
+break;<br />
 end;</p></li>
 </ul>
 
-<p>while true,
-  v(i)=999;
-  i=i+1;
-  if i==6,
-    break;
-  end;
+<p>while true,<br />
+  v(i)=999;<br />
+  i=i+1;<br />
+  if i==6,<br />
+    break;<br />
+  end;<br />
 end;<br />
 注意到，while和if后边跟的都是逗号 ,而后边的语句都是使用分号结尾 ;</p>
 
 <ul>
-<li><p>if-else if-else语句：
-if v(1)==1,
-disp(&ldquo;the value is one&rdquo;);
-elseif v(1)==2,
-disp(&ldquo;the value is two&rdquo;);
-else
-disp(&ldquo;the value is not one or two&rdquo;);
+<li><p>if-else if-else语句：<br />
+if v(1)==1,<br />
+disp(&ldquo;the value is one&rdquo;);<br />
+elseif v(1)==2,<br />
+disp(&ldquo;the value is two&rdquo;);<br />
+else<br />
+disp(&ldquo;the value is not one or two&rdquo;);<br />
 end;</p></li>
 
-<li><p>函数(function)
+<li><p>函数(function)<br />
 1.编写一个后缀名为.m的文件，文件中定义：<br />
 function y = squarethisnumber(x)<br />
 y = x^2;</p></li>
@@ -272,7 +272,7 @@ function J = costFunctionJ(x,y,theta)//传入的参数分别为x是构造矩阵�
                                      // y是向量，y=[1;2;3]
                                      // theta是参数向量，theta=[0;1]<br />
 m = size(x,1);//令m等于x矩阵的行数，这里为3，用于下边的计算。<br />
-predictions = x*theta;// 假设函数的值，通过矩阵运算一次求出，并且保存在predictions向量中
+predictions = x*theta;// 假设函数的值，通过矩阵运算一次求出，并且保存在predictions向量中<br />
 sqrErrors = (predictions-y).^2;// 求方差，进行的是位运算，对两个向量的差，求其平方<br />
 J = 1/(2*m) * sum(sqrErrors);//J为cost函数的损耗值</p>
 
