@@ -139,7 +139,7 @@
 <blockquote>
 <p>1.特征缩放  Feature scaling<br />
 对于特征值的区间相差很大的，其代价函数画出的图会很狭长(对于两个特征值，其图是狭长的椭圆)，这样找到的最优值的路径十分曲折，耗时。可以把特征值区间降到0到1(特征缩放)，
-这样画出来的图比较圆滑，找的路径也比较快捷，梯度下降算法也能更快的收敛。
+这样画出来的图比较圆滑，找的路径也比较快捷，梯度下降算法也能更快的收敛。<br />
 2.归一化  Mean normalization<br />
 即在特征缩放之前，先用特征值Xi减去平均值ui。</p>
 </blockquote>
@@ -178,43 +178,43 @@
 PS1(&lsquo;&gt;&gt; &lsquo;);   简化命令行<br />
 ；  可以抑制输出  比如 a=3 和a=3;  前者会在屏幕打印a=3，后者不会打印<br />
 disp(a) 或者直接打a  可以打印出a的信息<br />
-A=[1 2;3 4;5 6]    %定义一个3<em>2的矩阵A<br />
-v=1:0.1:2  定义一个从1开始 ，每列元素增加0.1，只到增加到2的行向量<br />
+A=[1 2;3 4;5 6]    %定义一个3x2的矩阵A<br />
+v=1:0.1:2  定义一个从1开始 ，每列元素增加0.1，直到增加到2的行向量<br />
 v=1:6   即v=[1 2 3 4 5 6]<br />
 ones(1,3)和zeros(1,3) 生成矩阵<br />
 rand(1,3) 随机生成矩阵<br />
 hist(w)  绘制直方图<br />
 eye(4)  生成4阶单位矩阵<br />
-help eye 显示帮助信息 按q退出
-load命令用于加载文件 load priceY.mat
-who命令和whos命令(更详细的信息)
-clear命令 clear v
-save命令 save hello.mat v   或者save hello.txt v -ascii  存为ascii码的文本文档
-：代表所有的某一行或列的值M
-.  符号代表元素位运算  .</em>   ./</p>
+help eye 显示帮助信息 按q退出<br />
+load命令用于加载文件 load priceY.mat<br />
+who命令和whos命令(更详细的信息)<br />
+clear命令 clear v<br />
+save命令 save hello.mat v   或者save hello.txt v -ascii  存为ascii码的文本文档<br />
+：代表所有的某一行或列的值M<br />
+.  符号代表元素位运算  .+   ./</p>
 </blockquote>
 
 <h4 id="使用octave绘制图表">使用octave绘制图表：</h4>
 
 <blockquote>
-<p>t=[0:0.01:0.98]
-y1=sin(2*pi*4*t)
-plot(t,y1)
-y2=cos(2*pi*4*t)
-plot(t,y2)
-hold on
-plot(t,y1,&lsquo;r&rsquo;)
-xlabel(&lsquo;time&rsquo;)  //x轴的名字
-ylabel(&lsquo;value&rsquo;) //y轴的名字
-legend(&lsquo;sin&rsquo;,&lsquo;cos&rsquo;) //右上角标识
-title(&lsquo;my plot&rsquo;)  //图像的名字
-print -dpng &lsquo;myplot.png&rsquo;  //保存图片
-cd &lsquo;C:\&rsquo; ; //改变路径
-close  // 关掉图片
-subplot(1,2,1)  //区间分成1行2列  使用第1列
-clf // 清除
-A= magic(5)
-imagesc(A)  //可视化矩阵
+<p>t=[0:0.01:0.98]<br />
+y1=sin(2*pi*4*t)<br />
+plot(t,y1)<br />
+y2=cos(2*pi*4*t)<br />
+plot(t,y2)<br />
+hold on<br />
+plot(t,y1,&lsquo;r&rsquo;)<br />
+xlabel(&lsquo;time&rsquo;)  //x轴的名字<br />
+ylabel(&lsquo;value&rsquo;) //y轴的名字<br />
+legend(&lsquo;sin&rsquo;,&lsquo;cos&rsquo;) //右上角标识<br />
+title(&lsquo;my plot&rsquo;)  //图像的名字<br />
+print -dpng &lsquo;myplot.png&rsquo;  //保存图片<br />
+cd &lsquo;C:\&rsquo; ; //改变路径<br />
+close  // 关掉图片<br />
+subplot(1,2,1)  //区间分成1行2列  使用第1列<br />
+clf // 清除<br />
+A= magic(5)<br />
+imagesc(A)  //可视化矩阵<br />
 imagesc(A),colorbar,colormap gray; //生成灰度条</p>
 </blockquote>
 
