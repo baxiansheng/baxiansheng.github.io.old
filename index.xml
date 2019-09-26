@@ -34,7 +34,6 @@ Menu,Role,User三个实体类，两个工具类，MenuUtil(作用有待研究)�
 - pol.xml中注入依赖
 - 用于登录验证的用户类User类必须实现UserDetails这个接口 - 注意核心config类的编写，必须继承WebSecurityConfigurerAdapter这个类，并且类中的configure方法需要Override
 下边说明一下从前端到后台的数据转发流程，多图
-![login]()
 前端这样写，注意form表单中的action，是login，前端的登录页面也叫login，这里有一个坑，input文本框 一定要name=&amp;ldquo;username&amp;rdquo;,不然后台不能自动取到这个值，也就无法从数据库中进行查询和验证了</description>
     </item>
     

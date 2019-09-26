@@ -29,7 +29,6 @@ Menu,Role,User三个实体类，两个工具类，MenuUtil(作用有待研究)�
 - pol.xml中注入依赖
 - 用于登录验证的用户类User类必须实现UserDetails这个接口 - 注意核心config类的编写，必须继承WebSecurityConfigurerAdapter这个类，并且类中的configure方法需要Override
 下边说明一下从前端到后台的数据转发流程，多图
-![login]()
 前端这样写，注意form表单中的action，是login，前端的登录页面也叫login，这里有一个坑，input文本框 一定要name=&ldquo;username&rdquo;,不然后台不能自动取到这个值，也就无法从数据库中进行查询和验证了"/>
 
     <meta property="og:title" content="Spring Boot" />
@@ -50,7 +49,6 @@ Menu,Role,User三个实体类，两个工具类，MenuUtil(作用有待研究)�
 - pol.xml中注入依赖
 - 用于登录验证的用户类User类必须实现UserDetails这个接口 - 注意核心config类的编写，必须继承WebSecurityConfigurerAdapter这个类，并且类中的configure方法需要Override
 下边说明一下从前端到后台的数据转发流程，多图
-![login]()
 前端这样写，注意form表单中的action，是login，前端的登录页面也叫login，这里有一个坑，input文本框 一定要name=&ldquo;username&rdquo;,不然后台不能自动取到这个值，也就无法从数据库中进行查询和验证了" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://baxiansheng.github.io/post/spring-boot/" />
@@ -145,14 +143,14 @@ Menu,Role,User三个实体类，两个工具类，MenuUtil(作用有待研究)�
 - 用于登录验证的用户类User类必须实现UserDetails这个接口
 - 注意核心config类的编写，必须继承WebSecurityConfigurerAdapter这个类，并且类中的configure方法需要Override<br />
 下边说明一下从前端到后台的数据转发流程，多图<br />
-![login]()<br />
+<img src="https://raw.githubusercontent.com/baxiansheng/ForSomething/master/imgs/login.png" alt="login" /><br />
 前端这样写，注意form表单中的action，是login，前端的登录页面也叫login，这里有一个坑，input文本框
 一定要name=&ldquo;username&rdquo;,不然后台不能自动取到这个值，也就无法从数据库中进行查询和验证了<br />
-![2]()<br />
+<img src="https://raw.githubusercontent.com/baxiansheng/ForSomething/master/imgs/2.png" alt="2" /><br />
 后台写一个controller用于转发请求，请求就这样写，然后return一个index(前端主页名叫index)<br />
-![config]()<br />
+<img src="https://raw.githubusercontent.com/baxiansheng/ForSomething/master/imgs/config.png" alt="config" /><br />
 注意到这条语句的意思是，当url变成/login的时候，跳转到名为login.html的页面<br />
-![config2]()<br />
+<img src="https://raw.githubusercontent.com/baxiansheng/ForSomething/master/imgs/config2.png" alt="config2" /><br />
 定义了，登录页面的url和登录失败是什么url<br />
 这里着重看一下.antMatchers().permitAll(),可以定义多个，用来针对不同的url对于不同的用户有不同的权限
 .permitAll()是指所有的用户都允许。</p>
