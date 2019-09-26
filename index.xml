@@ -17,15 +17,25 @@
       <pubDate>Thu, 26 Sep 2019 16:49:06 +0800</pubDate>
       
       <guid>https://baxiansheng.github.io/post/spring-boot/</guid>
-      <description> 本篇博客用于记录研究生期间对spring-boot框架的学习探索 Part Ⅰ 1.基于spring-boot的restful风格的接口开发 这里得贴一下这个代码结构
+      <description>本篇博客用于记录研究生期间对spring-boot框架的学习探索 Part Ⅰ 1.基于spring-boot的restful风格的接口开发 这里得贴一下这个代码结构
 针对这个后台数据库的建表，插入，查询等问题，使用jpa
 jpa操作数据库的几种方式：
-- ddl-auto:create 每次启动都会创建新表 - ddl-auto:update 第一次会创建新表，再次启动时，有数据是不会删除的 - ddl-auto:creat-top 启动时创建表，服务停止时删除表 - ddl-auto:none 什么都不做 - ddl-auto:validata 校验类的属性和表结构是否一致，如果不一致会报错 ok，这里分析一下这个代码的结构
+- ddl-auto:create 每次启动都会创建新表
+- ddl-auto:update 第一次会创建新表，再次启动时，有数据是不会删除的
+- ddl-auto:creat-top 启动时创建表，服务停止时删除表
+- ddl-auto:none 什么都不做
+- ddl-auto:validata 校验类的属性和表结构是否一致，如果不一致会报错
+ok，这里分析一下这个代码的结构
 Menu,Role,User三个实体类，两个工具类，MenuUtil(作用有待研究)，UuidUtil用来生成uuid
 三个Repository接口继承了JpaRepository，用于对数据库的数据进行操作。
 一个Controller，用于接收前端的请求。
 这里我们的工作就是开发一个新的接口来实现新建menu
-@RequestMapping(value = &amp;quot;&amp;quot;,method = RequestMethod.POST) Map&amp;lt;String,Object&amp;gt; createMenu(@RequestBody Menu menu){ //RequestBody用于接收前端的数据 String uuid = UuidUtil.createUuid(); menu.setId(uuid); menu.setDateCreated(new Date()); menuRepository.save(menu); //直接调用JpaRepository的save()方法 Map&amp;lt;String,Object&amp;gt; ret = new HashMap&amp;lt;&amp;gt;(); ret.put(&amp;quot;code&amp;quot;,&amp;quot;10000&amp;quot;); ret.put(&amp;quot;message&amp;quot;,&amp;quot;success&amp;quot;); return ret;	//返回一个状态集 }  2.基于spring-boot和spring-security的用户登录，授权，访问权限控制 </description>
+@RequestMapping(value = &amp;quot;&amp;quot;,method = RequestMethod.POST) Map&amp;lt;String,Object&amp;gt; createMenu(@RequestBody Menu menu){ //RequestBody用于接收前端的数据 String uuid = UuidUtil.createUuid(); menu.setId(uuid); menu.setDateCreated(new Date()); menuRepository.save(menu); //直接调用JpaRepository的save()方法 Map&amp;lt;String,Object&amp;gt; ret = new HashMap&amp;lt;&amp;gt;(); ret.put(&amp;quot;code&amp;quot;,&amp;quot;10000&amp;quot;); ret.put(&amp;quot;message&amp;quot;,&amp;quot;success&amp;quot;); return ret;	//返回一个状态集 }  2.基于spring-boot和spring-security的用户登录，授权，访问权限控制 spring-security是spring-boot的一个安全框架，使用spring-security需要注意的几个问题如下：
+- pol.xml中注入依赖
+- 用于登录验证的用户类User类必须实现UserDetails这个接口 - 注意核心config类的编写，必须继承WebSecurityConfigurerAdapter这个类，并且类中的configure方法需要Override
+下边说明一下从前端到后台的数据转发流程，多图
+![login]()
+前端这样写，注意form表单中的action，是login，前端的登录页面也叫login，这里有一个坑，input文本框 一定要name=&amp;ldquo;username&amp;rdquo;,不然后台不能自动取到这个值，也就无法从数据库中进行查询和验证了</description>
     </item>
     
     <item>

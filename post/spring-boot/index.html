@@ -12,26 +12,46 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Spring Boot"/>
-<meta name="twitter:description" content=" 本篇博客用于记录研究生期间对spring-boot框架的学习探索 Part Ⅰ 1.基于spring-boot的restful风格的接口开发 这里得贴一下这个代码结构
+<meta name="twitter:description" content="本篇博客用于记录研究生期间对spring-boot框架的学习探索 Part Ⅰ 1.基于spring-boot的restful风格的接口开发 这里得贴一下这个代码结构
 针对这个后台数据库的建表，插入，查询等问题，使用jpa
 jpa操作数据库的几种方式：
-- ddl-auto:create 每次启动都会创建新表 - ddl-auto:update 第一次会创建新表，再次启动时，有数据是不会删除的 - ddl-auto:creat-top 启动时创建表，服务停止时删除表 - ddl-auto:none 什么都不做 - ddl-auto:validata 校验类的属性和表结构是否一致，如果不一致会报错 ok，这里分析一下这个代码的结构
+- ddl-auto:create 每次启动都会创建新表
+- ddl-auto:update 第一次会创建新表，再次启动时，有数据是不会删除的
+- ddl-auto:creat-top 启动时创建表，服务停止时删除表
+- ddl-auto:none 什么都不做
+- ddl-auto:validata 校验类的属性和表结构是否一致，如果不一致会报错
+ok，这里分析一下这个代码的结构
 Menu,Role,User三个实体类，两个工具类，MenuUtil(作用有待研究)，UuidUtil用来生成uuid
 三个Repository接口继承了JpaRepository，用于对数据库的数据进行操作。
 一个Controller，用于接收前端的请求。
 这里我们的工作就是开发一个新的接口来实现新建menu
-@RequestMapping(value = &quot;&quot;,method = RequestMethod.POST) Map&lt;String,Object&gt; createMenu(@RequestBody Menu menu){ //RequestBody用于接收前端的数据 String uuid = UuidUtil.createUuid(); menu.setId(uuid); menu.setDateCreated(new Date()); menuRepository.save(menu); //直接调用JpaRepository的save()方法 Map&lt;String,Object&gt; ret = new HashMap&lt;&gt;(); ret.put(&quot;code&quot;,&quot;10000&quot;); ret.put(&quot;message&quot;,&quot;success&quot;); return ret;	//返回一个状态集 }  2.基于spring-boot和spring-security的用户登录，授权，访问权限控制 "/>
+@RequestMapping(value = &quot;&quot;,method = RequestMethod.POST) Map&lt;String,Object&gt; createMenu(@RequestBody Menu menu){ //RequestBody用于接收前端的数据 String uuid = UuidUtil.createUuid(); menu.setId(uuid); menu.setDateCreated(new Date()); menuRepository.save(menu); //直接调用JpaRepository的save()方法 Map&lt;String,Object&gt; ret = new HashMap&lt;&gt;(); ret.put(&quot;code&quot;,&quot;10000&quot;); ret.put(&quot;message&quot;,&quot;success&quot;); return ret;	//返回一个状态集 }  2.基于spring-boot和spring-security的用户登录，授权，访问权限控制 spring-security是spring-boot的一个安全框架，使用spring-security需要注意的几个问题如下：
+- pol.xml中注入依赖
+- 用于登录验证的用户类User类必须实现UserDetails这个接口 - 注意核心config类的编写，必须继承WebSecurityConfigurerAdapter这个类，并且类中的configure方法需要Override
+下边说明一下从前端到后台的数据转发流程，多图
+![login]()
+前端这样写，注意form表单中的action，是login，前端的登录页面也叫login，这里有一个坑，input文本框 一定要name=&ldquo;username&rdquo;,不然后台不能自动取到这个值，也就无法从数据库中进行查询和验证了"/>
 
     <meta property="og:title" content="Spring Boot" />
-<meta property="og:description" content=" 本篇博客用于记录研究生期间对spring-boot框架的学习探索 Part Ⅰ 1.基于spring-boot的restful风格的接口开发 这里得贴一下这个代码结构
+<meta property="og:description" content="本篇博客用于记录研究生期间对spring-boot框架的学习探索 Part Ⅰ 1.基于spring-boot的restful风格的接口开发 这里得贴一下这个代码结构
 针对这个后台数据库的建表，插入，查询等问题，使用jpa
 jpa操作数据库的几种方式：
-- ddl-auto:create 每次启动都会创建新表 - ddl-auto:update 第一次会创建新表，再次启动时，有数据是不会删除的 - ddl-auto:creat-top 启动时创建表，服务停止时删除表 - ddl-auto:none 什么都不做 - ddl-auto:validata 校验类的属性和表结构是否一致，如果不一致会报错 ok，这里分析一下这个代码的结构
+- ddl-auto:create 每次启动都会创建新表
+- ddl-auto:update 第一次会创建新表，再次启动时，有数据是不会删除的
+- ddl-auto:creat-top 启动时创建表，服务停止时删除表
+- ddl-auto:none 什么都不做
+- ddl-auto:validata 校验类的属性和表结构是否一致，如果不一致会报错
+ok，这里分析一下这个代码的结构
 Menu,Role,User三个实体类，两个工具类，MenuUtil(作用有待研究)，UuidUtil用来生成uuid
 三个Repository接口继承了JpaRepository，用于对数据库的数据进行操作。
 一个Controller，用于接收前端的请求。
 这里我们的工作就是开发一个新的接口来实现新建menu
-@RequestMapping(value = &quot;&quot;,method = RequestMethod.POST) Map&lt;String,Object&gt; createMenu(@RequestBody Menu menu){ //RequestBody用于接收前端的数据 String uuid = UuidUtil.createUuid(); menu.setId(uuid); menu.setDateCreated(new Date()); menuRepository.save(menu); //直接调用JpaRepository的save()方法 Map&lt;String,Object&gt; ret = new HashMap&lt;&gt;(); ret.put(&quot;code&quot;,&quot;10000&quot;); ret.put(&quot;message&quot;,&quot;success&quot;); return ret;	//返回一个状态集 }  2.基于spring-boot和spring-security的用户登录，授权，访问权限控制 " />
+@RequestMapping(value = &quot;&quot;,method = RequestMethod.POST) Map&lt;String,Object&gt; createMenu(@RequestBody Menu menu){ //RequestBody用于接收前端的数据 String uuid = UuidUtil.createUuid(); menu.setId(uuid); menu.setDateCreated(new Date()); menuRepository.save(menu); //直接调用JpaRepository的save()方法 Map&lt;String,Object&gt; ret = new HashMap&lt;&gt;(); ret.put(&quot;code&quot;,&quot;10000&quot;); ret.put(&quot;message&quot;,&quot;success&quot;); return ret;	//返回一个状态集 }  2.基于spring-boot和spring-security的用户登录，授权，访问权限控制 spring-security是spring-boot的一个安全框架，使用spring-security需要注意的几个问题如下：
+- pol.xml中注入依赖
+- 用于登录验证的用户类User类必须实现UserDetails这个接口 - 注意核心config类的编写，必须继承WebSecurityConfigurerAdapter这个类，并且类中的configure方法需要Override
+下边说明一下从前端到后台的数据转发流程，多图
+![login]()
+前端这样写，注意form表单中的action，是login，前端的登录页面也叫login，这里有一个坑，input文本框 一定要name=&ldquo;username&rdquo;,不然后台不能自动取到这个值，也就无法从数据库中进行查询和验证了" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://baxiansheng.github.io/post/spring-boot/" />
 <meta property="article:published_time" content="2019-09-26T16:49:06+08:00" />
@@ -93,11 +113,11 @@ Menu,Role,User三个实体类，两个工具类，MenuUtil(作用有待研究)�
 针对这个后台数据库的建表，插入，查询等问题，使用jpa<br />
 <img src="https://raw.githubusercontent.com/baxiansheng/ForSomething/master/imgs/jpa.png" alt="jpa" /><br />
 jpa操作数据库的几种方式：<br />
-- ddl-auto:create 每次启动都会创建新表
-- ddl-auto:update 第一次会创建新表，再次启动时，有数据是不会删除的
-- ddl-auto:creat-top 启动时创建表，服务停止时删除表
-- ddl-auto:none 什么都不做
-- ddl-auto:validata 校验类的属性和表结构是否一致，如果不一致会报错
+- ddl-auto:create 每次启动都会创建新表<br />
+- ddl-auto:update 第一次会创建新表，再次启动时，有数据是不会删除的<br />
+- ddl-auto:creat-top 启动时创建表，服务停止时删除表<br />
+- ddl-auto:none 什么都不做<br />
+- ddl-auto:validata 校验类的属性和表结构是否一致，如果不一致会报错<br />
 ok，这里分析一下这个代码的结构<br />
 Menu,Role,User三个实体类，两个工具类，MenuUtil(作用有待研究)，UuidUtil用来生成uuid<br />
 三个Repository接口继承了JpaRepository，用于对数据库的数据进行操作。<br />
@@ -115,10 +135,27 @@ Menu,Role,User三个实体类，两个工具类，MenuUtil(作用有待研究)�
         ret.put(&quot;message&quot;,&quot;success&quot;);
 
         return ret;				//返回一个状态集
-	}
+}
 </code></pre>
 
 <h3 id="2-基于spring-boot和spring-security的用户登录-授权-访问权限控制">2.基于spring-boot和spring-security的用户登录，授权，访问权限控制</h3>
+
+<p>spring-security是spring-boot的一个安全框架，使用spring-security需要注意的几个问题如下：<br />
+- pol.xml中注入依赖<br />
+- 用于登录验证的用户类User类必须实现UserDetails这个接口
+- 注意核心config类的编写，必须继承WebSecurityConfigurerAdapter这个类，并且类中的configure方法需要Override<br />
+下边说明一下从前端到后台的数据转发流程，多图<br />
+![login]()<br />
+前端这样写，注意form表单中的action，是login，前端的登录页面也叫login，这里有一个坑，input文本框
+一定要name=&ldquo;username&rdquo;,不然后台不能自动取到这个值，也就无法从数据库中进行查询和验证了<br />
+![2]()<br />
+后台写一个controller用于转发请求，请求就这样写，然后return一个index(前端主页名叫index)<br />
+![config]()<br />
+注意到这条语句的意思是，当url变成/login的时候，跳转到名为login.html的页面<br />
+![config2]()<br />
+定义了，登录页面的url和登录失败是什么url<br />
+这里着重看一下.antMatchers().permitAll(),可以定义多个，用来针对不同的url对于不同的用户有不同的权限
+.permitAll()是指所有的用户都允许。</p>
 
     </div>
     <div class="post-footer">
