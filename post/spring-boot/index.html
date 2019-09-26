@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Spring Boot // Welcome to my blog</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.56.3" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Baxiansheng" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://baxiansheng.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Spring Boot"/>
+<meta name="twitter:description" content=" 本篇博客用于记录研究生期间对spring-boot框架的学习探索 Part Ⅰ 1.基于spring-boot的restful风格的接口开发 这里得贴一下这个代码结构
+针对这个后台数据库的建表，插入，查询等问题，使用jpa
+jpa操作数据库的几种方式：
+- ddl-auto:create 每次启动都会创建新表 - ddl-auto:update 第一次会创建新表，再次启动时，有数据是不会删除的 - ddl-auto:creat-top 启动时创建表，服务停止时删除表 - ddl-auto:none 什么都不做 - ddl-auto:validata 校验类的属性和表结构是否一致，如果不一致会报错 ok，这里分析一下这个代码的结构
+Menu,Role,User三个实体类，两个工具类，MenuUtil(作用有待研究)，UuidUtil用来生成uuid
+三个Repository接口继承了JpaRepository，用于对数据库的数据进行操作。
+一个Controller，用于接收前端的请求。
+这里我们的工作就是开发一个新的接口来实现新建menu
+@RequestMapping(value = &quot;&quot;,method = RequestMethod.POST) Map&lt;String,Object&gt; createMenu(@RequestBody Menu menu){ //RequestBody用于接收前端的数据 String uuid = UuidUtil.createUuid(); menu.setId(uuid); menu.setDateCreated(new Date()); menuRepository.save(menu); //直接调用JpaRepository的save()方法 Map&lt;String,Object&gt; ret = new HashMap&lt;&gt;(); ret.put(&quot;code&quot;,&quot;10000&quot;); ret.put(&quot;message&quot;,&quot;success&quot;); return ret;	//返回一个状态集 }  2.基于spring-boot和spring-security的用户登录，授权，访问权限控制 "/>
+
+    <meta property="og:title" content="Spring Boot" />
+<meta property="og:description" content=" 本篇博客用于记录研究生期间对spring-boot框架的学习探索 Part Ⅰ 1.基于spring-boot的restful风格的接口开发 这里得贴一下这个代码结构
+针对这个后台数据库的建表，插入，查询等问题，使用jpa
+jpa操作数据库的几种方式：
+- ddl-auto:create 每次启动都会创建新表 - ddl-auto:update 第一次会创建新表，再次启动时，有数据是不会删除的 - ddl-auto:creat-top 启动时创建表，服务停止时删除表 - ddl-auto:none 什么都不做 - ddl-auto:validata 校验类的属性和表结构是否一致，如果不一致会报错 ok，这里分析一下这个代码的结构
+Menu,Role,User三个实体类，两个工具类，MenuUtil(作用有待研究)，UuidUtil用来生成uuid
+三个Repository接口继承了JpaRepository，用于对数据库的数据进行操作。
+一个Controller，用于接收前端的请求。
+这里我们的工作就是开发一个新的接口来实现新建menu
+@RequestMapping(value = &quot;&quot;,method = RequestMethod.POST) Map&lt;String,Object&gt; createMenu(@RequestBody Menu menu){ //RequestBody用于接收前端的数据 String uuid = UuidUtil.createUuid(); menu.setId(uuid); menu.setDateCreated(new Date()); menuRepository.save(menu); //直接调用JpaRepository的save()方法 Map&lt;String,Object&gt; ret = new HashMap&lt;&gt;(); ret.put(&quot;code&quot;,&quot;10000&quot;); ret.put(&quot;message&quot;,&quot;success&quot;); return ret;	//返回一个状态集 }  2.基于spring-boot和spring-security的用户登录，授权，访问权限控制 " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://baxiansheng.github.io/post/spring-boot/" />
+<meta property="article:published_time" content="2019-09-26T16:49:06+08:00" />
+<meta property="article:modified_time" content="2019-09-26T16:49:06+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://baxiansheng.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="Baxiansheng" /></a>
+      <h1>Welcome to my blog</h1>
+      <p>This is my personal blog, welcome to visit. And if you has any questions, please let me know. My github is under here.</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/baxiansheng"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Spring Boot</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Sep 26, 2019
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://baxiansheng.github.io/tags/study/">study</a></div></div>
+    </header>
+    <div class="post-content">
+      
+
+<h1 id="本篇博客用于记录研究生期间对spring-boot框架的学习探索">本篇博客用于记录研究生期间对spring-boot框架的学习探索</h1>
+
+<h2 id="part-ⅰ">Part Ⅰ</h2>
+
+<h3 id="1-基于spring-boot的restful风格的接口开发">1.基于spring-boot的restful风格的接口开发</h3>
+
+<p>这里得贴一下这个代码结构<br />
+<img src="https://raw.githubusercontent.com/baxiansheng/ForSomething/master/imgs/1.png" alt="" /><br />
+针对这个后台数据库的建表，插入，查询等问题，使用jpa<br />
+<img src="https://raw.githubusercontent.com/baxiansheng/ForSomething/master/imgs/jpa.png" alt="jpa" /><br />
+jpa操作数据库的几种方式：<br />
+- ddl-auto:create 每次启动都会创建新表
+- ddl-auto:update 第一次会创建新表，再次启动时，有数据是不会删除的
+- ddl-auto:creat-top 启动时创建表，服务停止时删除表
+- ddl-auto:none 什么都不做
+- ddl-auto:validata 校验类的属性和表结构是否一致，如果不一致会报错
+ok，这里分析一下这个代码的结构<br />
+Menu,Role,User三个实体类，两个工具类，MenuUtil(作用有待研究)，UuidUtil用来生成uuid<br />
+三个Repository接口继承了JpaRepository，用于对数据库的数据进行操作。<br />
+一个Controller，用于接收前端的请求。<br />
+这里我们的工作就是开发一个新的接口来实现新建menu</p>
+
+<pre><code>@RequestMapping(value = &quot;&quot;,method = RequestMethod.POST)
+    Map&lt;String,Object&gt; createMenu(@RequestBody Menu menu){   //RequestBody用于接收前端的数据
+        String uuid = UuidUtil.createUuid();
+        menu.setId(uuid);
+        menu.setDateCreated(new Date());
+        menuRepository.save(menu);                         //直接调用JpaRepository的save()方法
+        Map&lt;String,Object&gt; ret = new HashMap&lt;&gt;();
+        ret.put(&quot;code&quot;,&quot;10000&quot;);
+        ret.put(&quot;message&quot;,&quot;success&quot;);
+
+        return ret;				//返回一个状态集
+	}
+</code></pre>
+
+<h3 id="2-基于spring-boot和spring-security的用户登录-授权-访问权限控制">2.基于spring-boot和spring-security的用户登录，授权，访问权限控制</h3>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

@@ -3,36 +3,41 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://baxiansheng.github.io/post/my-daily-life/</loc>
-    <lastmod>2019-08-22T17:25:31+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://baxiansheng.github.io/post/</loc>
-    <lastmod>2019-08-22T17:25:31+08:00</lastmod>
+    <lastmod>2019-09-26T16:49:06+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://baxiansheng.github.io/post/spring-boot/</loc>
+    <lastmod>2019-09-26T16:49:06+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://baxiansheng.github.io/tags/</loc>
-    <lastmod>2019-08-22T17:25:31+08:00</lastmod>
+    <lastmod>2019-09-26T16:49:06+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://baxiansheng.github.io/</loc>
-    <lastmod>2019-08-22T17:25:31+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://baxiansheng.github.io/tags/life/</loc>
-    <lastmod>2019-08-22T17:25:31+08:00</lastmod>
+    <lastmod>2019-09-26T16:49:06+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://baxiansheng.github.io/tags/study/</loc>
+    <lastmod>2019-09-26T16:49:06+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://baxiansheng.github.io/post/my-daily-life/</loc>
+    <lastmod>2019-08-22T17:25:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://baxiansheng.github.io/tags/life/</loc>
     <lastmod>2019-08-22T17:25:31+08:00</lastmod>
     <priority>0</priority>
   </url>
