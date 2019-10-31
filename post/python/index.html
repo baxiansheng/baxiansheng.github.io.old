@@ -119,7 +119,15 @@ print(content) // 打印一下字典
 </ul>
 </blockquote>
 
-<h3 id="2">2.</h3>
+<h3 id="2-关于qa项目源代码阅读的一点学习知识">2.关于QA项目源代码阅读的一点学习知识</h3>
+
+<p>该项目是基于知识图谱的问答系统，是从别人那里拿来学习的。<br />
+项目源代码见：<br />
+<a href="https://github.com/IrvingBei/simple_movie_qa_with_KG">https://github.com/IrvingBei/simple_movie_qa_with_KG</a><br />
+&gt; num=re.sub(r&rsquo;\D&rsquo;,&ldquo;&rdquo;,str)  #把str中的非数字 使用&rdquo;&ldquo;替换掉，也就是把提取str中的数字<br />
+&gt; jieba.posseg.cut(str)  #返回str的两个属性：word 词语 + flag 词性<br />
+&gt; wordlist = list(jieba.cut(str))  #以list的形式返回str的分词结果给wordlist<br />
+&gt; os.walk(root_path)  #包含root,dirs,files三个数据结构，分别存储根路径，子目录，和当前路径下的文件</p>
 
     </div>
     <div class="post-footer">
